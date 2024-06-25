@@ -1,0 +1,362 @@
+[
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "shift": "PM",
+        "checkin": false
+    },
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "shift": "AM",
+        "checkin": true
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "shift": "PM",
+        "checkin": false
+    }
+]
