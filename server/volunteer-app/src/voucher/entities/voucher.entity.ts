@@ -11,10 +11,10 @@ import { Volunteer } from '../../volunteer/entities/volunteer.entity';
 @Entity()
 export class Voucher {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: string;
 
     @Column()
-    code: string;
+    code: string = '';
 
     @Column()
     drinksRemaining: number;

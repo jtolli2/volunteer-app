@@ -25,17 +25,19 @@ export class VoucherService {
         );
 
         if (voucher) {
-            return this.createForExistingVolunteer(voucher);
+            voucher = await this.createForExistingVolunteer(voucher);
+        } else {
+            const newVoucher: Voucher = new Voucher();
+            newVoucher.drinksRemaining = this.DEFAULT_VOUCHER_NUM;
+            newVoucher.mealsRemaining = this.DEFAULT_VOUCHER_NUM;
+            newVoucher.snacksRemaining = this.DEFAULT_VOUCHER_NUM;
+            newVoucher.volunteer = createVoucherDto.volunteer;
+
+            voucher = await this.repository.save(newVoucher);
+
+            voucher.code = await this.generateQRCode(voucher);
+            voucher = await this.repository.save(voucher);
         }
-
-        const newVoucher: Voucher = new Voucher();
-        newVoucher.code = await this.generateQRCode(createVoucherDto);
-        newVoucher.drinksRemaining = this.DEFAULT_VOUCHER_NUM;
-        newVoucher.mealsRemaining = this.DEFAULT_VOUCHER_NUM;
-        newVoucher.snacksRemaining = this.DEFAULT_VOUCHER_NUM;
-        newVoucher.volunteer = createVoucherDto.volunteer;
-
-        voucher = await this.repository.save(newVoucher);
 
         this.sendEmail(voucher);
 
@@ -57,7 +59,7 @@ export class VoucherService {
         return this.repository.find();
     }
 
-    async findOne(id: number): Promise<Voucher> {
+    async findOne(id: string): Promise<Voucher> {
         return this.repository.findOneBy({ id });
     }
 
@@ -68,7 +70,7 @@ export class VoucherService {
     }
 
     async update(
-        id: number,
+        id: string,
         updateVoucherDto: UpdateVoucherDto,
     ): Promise<Voucher> {
         const voucher: Voucher = await this.repository.findOneBy({ id });
@@ -79,15 +81,11 @@ export class VoucherService {
         return this.repository.save({ ...voucher, ...updateVoucherDto });
     }
 
-    async remove(id: number): Promise<DeleteResult> {
+    async remove(id: string): Promise<DeleteResult> {
         return this.repository.delete(id);
     }
 
-    private async generateQRCode(voucher: CreateVoucherDto): Promise<string> {
-        return QRCode.toDataURL(`${voucher.volunteer.id}`);
-    }
-
-    private async sendEmail(voucher: Voucher) {
+    async sendEmail(voucher: Voucher) {
         const mailOptions = {
             from: process.env.EMAIL_FROM,
             to:
@@ -101,5 +99,9 @@ export class VoucherService {
         };
 
         await this.mailerService.sendMail(mailOptions);
+    }
+
+    private async generateQRCode(voucher: Voucher): Promise<string> {
+        return QRCode.toDataURL(`${voucher.id}`);
     }
 }

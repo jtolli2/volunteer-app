@@ -27,7 +27,7 @@ export class VoucherController {
 
     @Get(':id')
     findOne(@Param('id') id: string) {
-        return this.voucherService.findOne(+id);
+        return this.voucherService.findOne(id);
     }
 
     @Patch(':id')
@@ -35,11 +35,18 @@ export class VoucherController {
         @Param('id') id: string,
         @Body() updateVoucherDto: UpdateVoucherDto,
     ) {
-        return this.voucherService.update(+id, updateVoucherDto);
+        return this.voucherService.update(id, updateVoucherDto);
     }
 
     @Delete(':id')
     remove(@Param('id') id: string) {
-        return this.voucherService.remove(+id);
+        return this.voucherService.remove(id);
+    }
+
+    @Get(':id/send-email')
+    async resendEmail(@Param('id') id: string) {
+        const voucher = await this.voucherService.findOne(id);
+
+        return await this.voucherService.sendEmail(voucher);
     }
 }

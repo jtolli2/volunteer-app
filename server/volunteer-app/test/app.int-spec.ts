@@ -37,8 +37,8 @@ describe('AppController (e2e)', () => {
                 }),
                 TypeOrmModule.forRoot({
                     type: 'better-sqlite3',
-                    // database: ':memory:',
-                    database: 'test.db',
+                    database: ':memory:',
+                    // database: 'test.db',
                     autoLoadEntities: true,
                     synchronize: true,
                     dropSchema: true,

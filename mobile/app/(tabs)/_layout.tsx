@@ -66,6 +66,22 @@ export default function TabLayout() {
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="camera" color={color} />
                     ),
+                    // Need unmountOnBlur to unmount camera on navigation
+                    unmountOnBlur: true,
+                }}
+            />
+            <Tabs.Screen
+                name="(volunteer)/[volunteerId]"
+                options={{
+                    title: 'Profile',
+                    href: null,
+                }}
+            />
+            <Tabs.Screen
+                name="(voucher)/[voucherId]"
+                options={{
+                    title: 'Voucher Details',
+                    // href: null,
                 }}
             />
         </Tabs>

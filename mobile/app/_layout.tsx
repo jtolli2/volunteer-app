@@ -9,6 +9,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 import { useColorScheme } from '@/components/useColorScheme';
 
@@ -54,35 +55,37 @@ function RootLayoutNav() {
     const [userToken, setUserToken] = useState<string>('hiimdaisy');
 
     return (
-        <ThemeProvider
-            value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-        >
-            {!userToken ? (
-                <Stack>
-                    <Stack.Screen
-                        name="signin"
-                        options={{
-                            title: 'Sign in',
-                            // When logging out, a pop animation feels intuitive
-                            // You can remove this if you want the default 'push' animation
-                            /* animationTypeForReplace: state.isSignout
+        <RootSiblingParent>
+            <ThemeProvider
+                value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+            >
+                {!userToken ? (
+                    <Stack>
+                        <Stack.Screen
+                            name="signin"
+                            options={{
+                                title: 'Sign in',
+                                // When logging out, a pop animation feels intuitive
+                                // You can remove this if you want the default 'push' animation
+                                /* animationTypeForReplace: state.isSignout
                                 ? 'pop'
                                 : 'push', */
-                        }}
-                    />
-                </Stack>
-            ) : (
-                <Stack>
-                    <Stack.Screen
-                        name="(tabs)"
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="signin"
-                        options={{ presentation: 'modal' }}
-                    />
-                </Stack>
-            )}
-        </ThemeProvider>
+                            }}
+                        />
+                    </Stack>
+                ) : (
+                    <Stack>
+                        <Stack.Screen
+                            name="(tabs)"
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="signin"
+                            options={{ presentation: 'modal' }}
+                        />
+                    </Stack>
+                )}
+            </ThemeProvider>
+        </RootSiblingParent>
     );
 }

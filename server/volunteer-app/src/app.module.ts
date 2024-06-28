@@ -28,12 +28,12 @@ import { Shift } from './shift/entities/shift.entity';
                     ? ormConfig
                     : ormConfigProd,
         }),
-        TypeOrmModule.forFeature([Volunteer, Voucher, Shift]),
+        // TypeOrmModule.forFeature([Volunteer, Voucher, Shift]),
         VolunteerModule,
         VoucherModule,
         ShiftModule,
     ],
     controllers: [AppController],
-    providers: [AppService, VolunteerService, VoucherService, ShiftService],
+    providers: [AppService],
 })
 export class AppModule {}

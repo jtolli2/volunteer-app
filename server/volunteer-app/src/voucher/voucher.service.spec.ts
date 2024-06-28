@@ -16,7 +16,7 @@ describe('VoucherService', () => {
 
     beforeAll(async () => {
         testVolunteer = {
-            id: 1,
+            id: '1',
             firstName: 'John',
             lastName: 'Doe',
             email: 'jdoe@me.com',

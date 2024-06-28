@@ -28,11 +28,11 @@ export class ShiftService {
         return this.repository.find();
     }
 
-    async findOne(id: number): Promise<Shift> {
+    async findOne(id: string): Promise<Shift> {
         return this.repository.findOneBy({ id });
     }
 
-    async update(id: number, updateShiftDto: UpdateShiftDto): Promise<Shift> {
+    async update(id: string, updateShiftDto: UpdateShiftDto): Promise<Shift> {
         const shift: Shift = await this.repository.findOneBy({ id });
 
         if (!shift) {
@@ -42,7 +42,7 @@ export class ShiftService {
         return this.repository.save({ ...shift, ...updateShiftDto });
     }
 
-    async remove(id: number): Promise<DeleteResult> {
+    async remove(id: string): Promise<DeleteResult> {
         return this.repository.delete(id);
     }
 }

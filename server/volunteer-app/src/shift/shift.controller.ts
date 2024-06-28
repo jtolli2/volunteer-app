@@ -27,16 +27,16 @@ export class ShiftController {
 
     @Get(':id')
     findOne(@Param('id') id: string) {
-        return this.shiftService.findOne(+id);
+        return this.shiftService.findOne(id);
     }
 
     @Patch(':id')
     update(@Param('id') id: string, @Body() updateShiftDto: UpdateShiftDto) {
-        return this.shiftService.update(+id, updateShiftDto);
+        return this.shiftService.update(id, updateShiftDto);
     }
 
     @Delete(':id')
     remove(@Param('id') id: string) {
-        return this.shiftService.remove(+id);
+        return this.shiftService.remove(id);
     }
 }

@@ -6,8 +6,8 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 } from 'typeorm';
-import { Volunteer } from '../../volunteer/entities/volunteer.entity';
 import { Day, Time } from '../../shared/enums';
+import { Volunteer } from '../../volunteer/entities/volunteer.entity';
 
 @Entity({
     orderBy: {
@@ -17,7 +17,7 @@ import { Day, Time } from '../../shared/enums';
 })
 export class Shift {
     @PrimaryGeneratedColumn('uuid')
-    id: number;
+    id: string;
 
     @Column({
         type: 'simple-enum',

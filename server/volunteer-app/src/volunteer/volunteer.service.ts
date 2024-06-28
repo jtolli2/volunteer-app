@@ -24,12 +24,12 @@ export class VolunteerService {
         return this.repository.find();
     }
 
-    async findOne(id: number): Promise<Volunteer> {
+    async findOne(id: string): Promise<Volunteer> {
         return this.repository.findOneBy({ id });
     }
 
     async update(
-        id: number,
+        id: string,
         updateVolunteerDto: UpdateVolunteerDto,
     ): Promise<Volunteer> {
         const volunteer: Volunteer = await this.repository.findOneBy({ id });
@@ -40,7 +40,22 @@ export class VolunteerService {
         return this.repository.save({ ...volunteer, ...updateVolunteerDto });
     }
 
-    async remove(id: number): Promise<DeleteResult> {
+    async remove(id: string): Promise<DeleteResult> {
         return this.repository.delete(id);
+    }
+
+    async getDetails(id: string): Promise<Volunteer> {
+        let volunteer: Volunteer = await this.repository.findOneBy({ id });
+
+        if (!volunteer) {
+            throw new NotFoundException(`Volunteer with ID:${id} not found`);
+        }
+
+        await volunteer.shifts;
+        await volunteer.vouchers;
+
+        console.log(volunteer);
+
+        return volunteer;
     }
 }

@@ -17,7 +17,7 @@ import { Voucher } from '../../voucher/entities/voucher.entity';
 })
 export class Volunteer {
     @PrimaryGeneratedColumn('uuid')
-    id: number;
+    id: string;
 
     @Column()
     firstName: string;

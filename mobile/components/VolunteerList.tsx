@@ -1,27 +1,32 @@
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, Pressable, RefreshControl, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
-import data from '@/SampleData.json';
 import VolunteerListHeader from './VolunteerListHeader';
-import { Text, View } from '@/components/Themed';
+import { Text, View } from '../components/Themed';
+import { Shift } from '../common/entity/Shift';
+import { RefetchFunction } from 'axios-hooks';
+import { Link } from 'expo-router';
 
-interface SampleData {
-    firstName: string;
-    lastName: string;
-    shift: string;
-    checkin: boolean;
+interface VolunteerListProps {
+    data: Shift[];
+    refetch: RefetchFunction<any, any>;
 }
 
-export default function VolunteerList() {
-    // const [data, setData] = useState([require('@/SampleData.json')]);
+export default function VolunteerList({ data, refetch }: VolunteerListProps) {
+    const [refreshing, setRefreshing] = useState(false);
 
-    function renderItem({ item }: { item: SampleData }) {
+    function renderItem({ item }: { item: Shift }) {
         return (
-            <View style={styles.row}>
-                <Text style={styles.cell}>{item.firstName}</Text>
-                <Text style={styles.cell}>{item.lastName}</Text>
-                <Text style={styles.cell}>{item.shift}</Text>
-                <Text style={styles.cell}>{item.checkin ? 'true' : 'false'}</Text>
-            </View>
+            <Link href={`/(tabs)/(volunteer)/${item.volunteer.id}`} asChild>
+                <Pressable style={styles.row}>
+                    <Text style={styles.cell}>{item.volunteer.firstName}</Text>
+                    <Text style={styles.cell}>{item.volunteer.lastName}</Text>
+                    <Text style={styles.cell}>{item.volunteer.email}</Text>
+                    <Text style={styles.cell}>
+                        {/* {item.checkin ? 'true' : 'false'} */}
+                        {item.id.toString()}
+                    </Text>
+                </Pressable>
+            </Link>
         );
     }
 
@@ -30,8 +35,14 @@ export default function VolunteerList() {
             <VolunteerListHeader />
             <FlatList
                 data={data}
-                keyExtractor={(item: SampleData, index: number) => index.toString()}
+                keyExtractor={(item: Shift) => item.id.toString()}
                 renderItem={renderItem}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={refetch}
+                    />
+                }
             ></FlatList>
         </View>
     );
@@ -39,7 +50,7 @@ export default function VolunteerList() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
     row: {
         flexDirection: 'row',
