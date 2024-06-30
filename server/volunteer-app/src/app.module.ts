@@ -14,6 +14,8 @@ import ormConfigProd from './config/orm.config.prod';
 import { Volunteer } from './volunteer/entities/volunteer.entity';
 import { Voucher } from './voucher/entities/voucher.entity';
 import { Shift } from './shift/entities/shift.entity';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
     imports: [
@@ -28,10 +30,11 @@ import { Shift } from './shift/entities/shift.entity';
                     ? ormConfig
                     : ormConfigProd,
         }),
-        // TypeOrmModule.forFeature([Volunteer, Voucher, Shift]),
         VolunteerModule,
         VoucherModule,
         ShiftModule,
+        AuthModule,
+        UserModule,
     ],
     controllers: [AppController],
     providers: [AppService],

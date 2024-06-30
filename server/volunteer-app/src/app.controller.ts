@@ -1,6 +1,9 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, UseGuards, Request } from '@nestjs/common';
 import { AppService } from './app.service';
-// const QRCode = require('qrcode');
+import { AuthGuard } from '@nestjs/passport';
+import { LocalAuthGuard } from './auth/guard/local-auth.guard';
+import { AuthService } from './auth/auth.service';
+import { JwtAuthGuard } from './auth/guard/jwt-auth.guard';
 
 @Controller()
 export class AppController {
@@ -9,9 +12,11 @@ export class AppController {
     @Get()
     getHello(): any {
         return this.appService.getHello();
+    }
 
-        /* QRCode.toString(`Hi I'm Daisy!`, { type: 'terminal' }, function (err, url) {
-      console.log(`${typeof url}\n${url.toString()}`);
-    }); */
+    @UseGuards(JwtAuthGuard)
+    @Get('profile')
+    getProfile(@Request() req: any) {
+        return req.user;
     }
 }

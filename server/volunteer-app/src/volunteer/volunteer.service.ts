@@ -16,7 +16,9 @@ export class VolunteerService {
         return this.repository.save(createVolunteerDto);
     }
 
-    createMany(testVolunteerDtos: CreateVolunteerDto[]): Promise<Volunteer[]> {
+    async createMany(
+        testVolunteerDtos: CreateVolunteerDto[],
+    ): Promise<Volunteer[]> {
         return this.repository.save(testVolunteerDtos);
     }
 
