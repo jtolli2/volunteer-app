@@ -12,6 +12,9 @@ import 'react-native-reanimated';
 import { RootSiblingParent } from 'react-native-root-siblings';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { AuthProvider, useAuth } from '../common/service/AuthContext';
+import { configure } from 'axios-hooks';
+import useAxiosPrivate from '../common/util/useAxiosPrivate';
 
 export {
     // Catch any errors thrown by the Layout component.
@@ -47,44 +50,30 @@ export default function RootLayout() {
         return null;
     }
 
-    return <RootLayoutNav />;
+    return (
+        <AuthProvider>
+            <RootLayoutNav />
+        </AuthProvider>
+    );
 }
 
 function RootLayoutNav() {
+    // Configure axios-hooks with custom axios instance
+    configure({ axios: useAxiosPrivate() });
     const colorScheme = useColorScheme();
-    const [userToken, setUserToken] = useState<string>('hiimdaisy');
 
     return (
+        // RootSiblingParent used to enable toast notifications
         <RootSiblingParent>
             <ThemeProvider
                 value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
             >
-                {!userToken ? (
-                    <Stack>
-                        <Stack.Screen
-                            name="signin"
-                            options={{
-                                title: 'Sign in',
-                                // When logging out, a pop animation feels intuitive
-                                // You can remove this if you want the default 'push' animation
-                                /* animationTypeForReplace: state.isSignout
-                                ? 'pop'
-                                : 'push', */
-                            }}
-                        />
-                    </Stack>
-                ) : (
-                    <Stack>
-                        <Stack.Screen
-                            name="(tabs)"
-                            options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                            name="signin"
-                            options={{ presentation: 'modal' }}
-                        />
-                    </Stack>
-                )}
+                <Stack>
+                    <Stack.Screen
+                        name="(drawer)"
+                        options={{ headerShown: false }}
+                    />
+                </Stack>
             </ThemeProvider>
         </RootSiblingParent>
     );

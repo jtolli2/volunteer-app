@@ -1,7 +1,7 @@
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import { useGetVolunteerDetails } from '../../../common/service/volunteer-service';
-import { View, Text } from '../../../components/Themed';
+import { useGetVolunteerDetails } from '../../../../common/service/volunteer-service';
+import { View, Text } from '../../../../components/Themed';
 import {
     ActivityIndicator,
     FlatList,
@@ -9,8 +9,8 @@ import {
     ScrollView,
     StyleSheet,
 } from 'react-native';
-import DataError from '../../../components/DataError';
-import NoData from '../../../components/NoData';
+import DataError from '../../../../components/DataError';
+import NoData from '../../../../components/NoData';
 
 export default function VolunteerDetails() {
     const { volunteerId } = useLocalSearchParams<{ volunteerId: string }>();

@@ -6,10 +6,12 @@ import {
     Patch,
     Param,
     Delete,
+    UseGuards,
 } from '@nestjs/common';
 import { ShiftService } from './shift.service';
 import { CreateShiftDto } from './dto/create-shift.dto';
 import { UpdateShiftDto } from './dto/update-shift.dto';
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 
 @Controller('shift')
 export class ShiftController {
@@ -20,6 +22,7 @@ export class ShiftController {
         return this.shiftService.create(createShiftDto);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get()
     findAll() {
         return this.shiftService.findAll();

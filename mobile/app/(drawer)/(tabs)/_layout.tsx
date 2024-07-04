@@ -24,9 +24,9 @@ export default function TabLayout() {
                 tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
                 // Disable the static render of the header on web
                 // to prevent a hydration error in React Navigation v6.
-                headerShown: useClientOnlyValue(false, true),
+                /* headerShown: useClientOnlyValue(false, true),
                 headerRight: () => (
-                    <Link href="/signin" asChild>
+                    <Link href="/(tabs)/(menu)" asChild>
                         <Pressable>
                             {({ pressed }) => (
                                 <FontAwesome
@@ -44,7 +44,8 @@ export default function TabLayout() {
                 ),
                 headerStyle: {
                     backgroundColor: Colors[colorScheme ?? 'light'].background,
-                },
+                }, */
+                headerShown: false,
                 tabBarStyle: {
                     backgroundColor: Colors[colorScheme ?? 'light'].background,
                 },
@@ -54,16 +55,16 @@ export default function TabLayout() {
                 name="index"
                 options={{
                     title: 'Check-in',
-                    tabBarIcon: ({ color }) => (
+                    tabBarIcon: ({ color }: { color: string }) => (
                         <TabBarIcon name="check" color={color} />
                     ),
                 }}
             />
             <Tabs.Screen
-                name="two"
+                name="scan"
                 options={{
                     title: 'Scan Voucher',
-                    tabBarIcon: ({ color }) => (
+                    tabBarIcon: ({ color }: { color: string }) => (
                         <TabBarIcon name="camera" color={color} />
                     ),
                     // Need unmountOnBlur to unmount camera on navigation

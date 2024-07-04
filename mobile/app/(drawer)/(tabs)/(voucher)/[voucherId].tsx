@@ -1,14 +1,14 @@
 import { ActivityIndicator, Button, StyleSheet } from 'react-native';
-import { View, Text } from '../../../components/Themed';
+import { View, Text } from '../../../../components/Themed';
 import React from 'react';
 import { useLocalSearchParams } from 'expo-router';
 import {
     useGetVoucher,
     useUpdateVoucher,
-} from '../../../common/service/voucher-service';
-import NoData from '../../../components/NoData';
-import DataError from '../../../components/DataError';
-import { Voucher } from '../../../common/entity/Voucher';
+} from '../../../../common/service/voucher-service';
+import NoData from '../../../../components/NoData';
+import DataError from '../../../../components/DataError';
+import { Voucher } from '../../../../common/entity/Voucher';
 import Toast from 'react-native-root-toast';
 import * as Haptics from 'expo-haptics';
 

@@ -9,13 +9,22 @@ import { Text, View } from '@/components/Themed';
 import { SearchBar } from '@rneui/themed';
 import VolunteerList from '@/components/VolunteerList';
 import { useColorScheme } from '@/components/useColorScheme';
-import { useGetShifts } from '../../common/service/shift-service';
-import DataError from '../../components/DataError';
-import NoData from '../../components/NoData';
+import { useGetShifts } from '../../../common/service/shift-service';
+import DataError from '../../../components/DataError';
+import NoData from '../../../components/NoData';
+import { useAuth } from '../../../common/service/AuthContext';
+import { Shift } from '../../../common/entity/Shift';
+import { useEffect, useState } from 'react';
 
-export default function TabOneScreen() {
+export default function CheckinScreen() {
     const colorScheme = useColorScheme();
     const [{ loading, data, error }, refetch] = useGetShifts();
+    const [search, setSearch] = useState('');
+    const [filteredData, setFilteredData] = useState<Shift[]>(data!);
+
+    useEffect(() => {
+        setFilteredData(data!);
+    }, [data]);
 
     // if (error) throw error;
     if (error) {
@@ -34,6 +43,21 @@ export default function TabOneScreen() {
         );
     }
 
+    const updateSearch = (searchQuery: string) => {
+        setSearch(searchQuery);
+        const filter = data.filter(
+            (shift: Shift) =>
+                shift.volunteer.firstName
+                    .toLowerCase()
+                    .includes(searchQuery.toLowerCase()) ||
+                shift.volunteer.lastName
+                    .toLowerCase()
+                    .includes(searchQuery.toLowerCase())
+        );
+
+        setFilteredData(filter);
+    };
+
     // Return the list of volunteers
     return (
         <View style={styles.container}>
@@ -51,11 +75,18 @@ export default function TabOneScreen() {
             <SearchBar
                 containerStyle={{ padding: 5 }}
                 style={{ width: 'auto' }}
-                placeholder="Type Here..."
+                placeholder="Search..."
+                onChangeText={(value) => {
+                    updateSearch(value);
+                }}
+                value={search}
                 lightTheme={colorScheme !== 'dark'}
             />
+            {/* {filteredData.length === 0 && (
+                <NoData loading={loading} refetch={refetch} />
+            )} */}
             {/* <VolunteerList data={data.map((shift: Shift) => shift.volunteer)} /> */}
-            <VolunteerList data={data} refetch={refetch} />
+            <VolunteerList data={filteredData} refetch={refetch} />
         </View>
     );
 }

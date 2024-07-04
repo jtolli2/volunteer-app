@@ -1,12 +1,15 @@
-import useAxios, { UseAxiosResult } from 'axios-hooks';
+import useAxios, { UseAxiosResult, configure } from 'axios-hooks';
 import { Shift } from '../entity/Shift';
+import useAxiosPrivate from '../util/useAxiosPrivate';
+
 
 export function useGetShifts() {
-    return useAxios('http://starsummit.net:8888/shift') as UseAxiosResult<
-        Shift[],
-        any,
-        any
-    >;
+    configure({
+        axios: useAxiosPrivate()
+    })
+    return useAxios(
+        'http://starsummit.net:8888/shift'
+    ) as UseAxiosResult<Shift[], any, any>;
 }
 
 export function usePostShift() {
